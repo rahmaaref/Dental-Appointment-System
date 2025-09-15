@@ -1,0 +1,11 @@
+{
+  "name": "dental-frontend-monorepo",
+  "private": true,
+  "workspaces": ["patient", "staff"],
+  "scripts": {
+    "dev": "concurrently -n PATIENT,STAFF -c cyan,magenta \"npm run dev -w patient\" \"npm run dev -w staff\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}
