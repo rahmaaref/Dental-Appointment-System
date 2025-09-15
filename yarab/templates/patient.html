@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Public+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<title>Faculty of Dentistry Appointment system</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+        :root {
+            --primary-color: #0d9488;
+            --secondary-color: #f0fdfa;
+            --accent-color: #1173d4;
+        }
+    </style>
+</head>
+<body class="bg-[var(--secondary-color)]">
+<div class="relative flex size-full min-h-screen flex-col bg-white group/design-root" style='font-family: "Public Sans", "Noto Sans", sans-serif;'>
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-200 px-10 py-4 shadow-sm">
+<div class="flex items-center gap-3 text-teal-600">
+<img src="/static/logo.png" alt="Logo" class="h-12 w-12 object-contain"/>
+<h2 class="text-2xl font-bold tracking-tight text-gray-800">Faculty of Dentistry Appointment system</h2>
+</div>
+<nav class="flex items-center gap-8"></nav>
+</header>
+<main class="flex-1">
+  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div class="bg-teal-50 rounded-xl p-6 shadow border border-teal-100">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">Track My Appointments</h3>
+        <form id="track-form" class="space-y-3">
+          <div>
+            <label class="sr-only" for="track-national">National ID</label>
+            <input id="track-national" name="national_id" type="text" class="w-full h-11 px-3 rounded-md border border-gray-300" placeholder="National ID (or use ticket below)" />
+          </div>
+          <div>
+            <label class="sr-only" for="track-ticket">Ticket Number</label>
+            <input id="track-ticket" name="ticket" type="text" class="w-full h-11 px-3 rounded-md border border-gray-300" placeholder="Ticket Number (alternative)" />
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <input id="track-phone" name="phone" type="text" class="w-full h-11 px-3 rounded-md border border-gray-300" placeholder="Phone (optional)" />
+          </div>
+          <button type="submit" class="w-full h-11 rounded-md bg-teal-600 text-white font-semibold">Show Appointments</button>
+        </form>
+        <div id="track-results" class="mt-4 space-y-2"></div>
+      </div>
+      <div class="bg-white rounded-xl p-6 shadow border border-gray-200">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">Register New Appointment</h3>
+        <form id="book-form" class="space-y-3" enctype="multipart/form-data">
+          <input id="book-name" name="name" type="text" required class="w-full h-11 px-3 rounded-md border border-gray-300" placeholder="Full Name" />
+          <input id="book-phone" name="phone" type="text" required class="w-full h-11 px-3 rounded-md border border-gray-300" placeholder="Phone" />
+          <input id="book-national" name="national_id" type="text" required class="w-full h-11 px-3 rounded-md border border-gray-300" placeholder="National ID" />
+          <textarea id="book-symptoms" name="symptoms" rows="3" class="w-full px-3 py-2 rounded-md border border-gray-300" placeholder="Symptoms (optional)"></textarea>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-sm text-gray-600 mb-1">Image (optional)</label>
+              <input id="book-image" name="image" type="file" accept="image/*" class="w-full" />
+            </div>
+            <div>
+              <label class="block text-sm text-gray-600 mb-1">Voice (optional)</label>
+              <input id="book-voice" name="voice" type="file" accept="audio/*" class="w-full" />
+              <div class="flex items-center gap-2 mt-2">
+                <button type="button" id="record-start" class="px-3 py-1.5 rounded bg-teal-600 text-white text-sm">Record</button>
+                <button type="button" id="record-stop" class="px-3 py-1.5 rounded bg-gray-700 text-white text-sm">Stop</button>
+              </div>
+              <audio id="record-audio" controls class="w-full mt-2 hidden"></audio>
+            </div>
+          </div>
+          <button type="submit" class="w-full h-11 rounded-md bg-teal-600 text-white font-semibold">Submit</button>
+        </form>
+        <p class="mt-2 text-xs text-gray-500">System will assign earliest available date automatically.</p>
+      </div>
+    </div>
+  </section>
+  <section class="py-10 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-5xl mx-auto">
+      <h3 class="text-2xl font-bold text-gray-800 mb-4">Location</h3>
+      <div class="rounded-lg overflow-hidden border border-gray-200">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d455.7596622359771!2d31.16908852286188!3d27.18668653340407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2seg!4v1757405238467!5m2!1sen!2seg" width="600" height="450" style="border:0; width:100%; height:450px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="toast" class="fixed bottom-4 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-sm px-3 py-2 rounded hidden"></div>
+
+<!-- Booking success modal -->
+<div id="book-modal" class="fixed inset-0 z-50 hidden">
+  <div class="absolute inset-0 bg-black/50"></div>
+  <div class="absolute inset-0 flex items-center justify-center p-4">
+    <div class="w-full max-w-md rounded-lg bg-white shadow-lg p-5">
+      <div class="flex items-start justify-between mb-3">
+        <h3 class="text-lg font-semibold text-gray-800">Reservation Confirmed</h3>
+        <button id="book-modal-close" class="text-gray-500 hover:text-gray-700">✕</button>
+      </div>
+      <p id="book-modal-msg" class="text-sm text-gray-700"></p>
+    </div>
+  </div>
+  </div>
+<script src="/static/app.js" defer></script>
+</div>
+</div>
+
+</body></html>
