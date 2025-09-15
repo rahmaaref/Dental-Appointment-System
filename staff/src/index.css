@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Futuristic color palette */
+    --background: 0 0% 100%;
+    --foreground: 213 27% 15%;
+    
+    /* Primary - Teal */
+    --primary: 180 72% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 180 100% 50%;
+    
+    /* Secondary - Mint */
+    --secondary: 150 50% 85%;
+    --secondary-foreground: 213 27% 15%;
+    
+    /* Teal variations */
+    --teal: 180 72% 45%;
+    --teal-neon: 180 100% 50%;
+    
+    /* Mint variations */
+    --mint: 150 50% 85%;
+    --mint-light: 150 40% 95%;
+    
+    /* Slate for text */
+    --slate: 210 15% 40%;
+    --slate-dark: 213 27% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 213 27% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 213 27% 15%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 150 50% 85%;
+    --accent-foreground: 213 27% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 180 20% 90%;
+    --input: 180 20% 90%;
+    --ring: 180 72% 45%;
+
+    --radius: 0.75rem;
+
+    /* Glass effects base */
+    --glass-bg: 255 255 255;
+    --glass-opacity: 0.1;
+    --glass-blur: 10px;
+    
+    /* Sidebar theming */
+    --sidebar-background: 150 40% 95%;
+    --sidebar-foreground: 213 27% 15%;
+    --sidebar-primary: 180 72% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 150 50% 85%;
+    --sidebar-accent-foreground: 213 27% 15%;
+    --sidebar-border: 180 20% 85%;
+    --sidebar-ring: 180 72% 45%;
+  }
+
+  .dark {
+    --background: 213 27% 5%;
+    --foreground: 210 40% 98%;
+
+    --primary: 180 72% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 180 100% 50%;
+
+    --secondary: 150 30% 20%;
+    --secondary-foreground: 210 40% 98%;
+
+    --teal: 180 72% 45%;
+    --teal-neon: 180 100% 50%;
+
+    --mint: 150 30% 30%;
+    --mint-light: 150 30% 15%;
+
+    --slate: 210 15% 60%;
+    --slate-dark: 210 40% 98%;
+
+    --card: 213 27% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 213 27% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 150 30% 25%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 180 20% 20%;
+    --input: 180 20% 20%;
+    --ring: 180 72% 45%;
+
+    --glass-bg: 30 30 30;
+    --glass-opacity: 0.05;
+    
+    --sidebar-background: 213 27% 8%;
+    --sidebar-foreground: 210 40% 95%;
+    --sidebar-primary: 180 72% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 150 30% 20%;
+    --sidebar-accent-foreground: 210 40% 95%;
+    --sidebar-border: 180 20% 15%;
+    --sidebar-ring: 180 72% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* RTL Support */
+  [dir="rtl"] {
+    font-family: 'Noto Sans Arabic', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  /* Glass panel styling */
+  .glass-panel {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-glass;
+  }
+  
+  .glass-panel-solid {
+    @apply bg-white/90 backdrop-blur-sm border border-white/30 rounded-xl shadow-glass-sm;
+  }
+  
+  /* Neon glow effects */
+  .neon-border {
+    @apply border border-primary/50 shadow-neon-sm;
+  }
+  
+  .neon-border-strong {
+    @apply border-2 border-primary shadow-neon;
+  }
+  
+  /* Button variants */
+  .btn-futuristic {
+    @apply px-4 py-2 bg-primary text-primary-foreground rounded-lg font-medium
+           transition-all duration-300 hover:shadow-neon hover:scale-105
+           active:scale-95 border border-primary/50;
+  }
+  
+  .btn-glass {
+    @apply px-4 py-2 bg-white/10 backdrop-blur-md text-foreground rounded-lg font-medium
+           transition-all duration-300 hover:bg-white/20 hover:shadow-glass
+           active:scale-95 border border-white/30;
+  }
+  
+  /* Table styling */
+  .data-table-row {
+    @apply hover:bg-primary/5 transition-colors duration-200;
+  }
+  
+  .data-table-row-hover {
+    @apply hover:bg-primary/10 hover:shadow-neon-sm transition-all duration-200;
+  }
+  
+  /* Status badges */
+  .badge-pending {
+    @apply bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .badge-completed {
+    @apply bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium;
+  }
+  
+  /* Particle background */
+  .particle {
+    @apply absolute w-1 h-1 bg-primary/30 rounded-full;
+  }
+}
